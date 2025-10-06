@@ -1,0 +1,17 @@
+{
+    "name": "daffa/project-absensi",
+    "autoload": {
+        "psr-4": {
+            "Daffa\\ProjectAbsensi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "daffa09",
+            "email": "daffa.fathan9@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.1"
+    }
+}
