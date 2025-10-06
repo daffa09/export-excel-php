@@ -13,3 +13,8 @@ This project demonstrates how to export data to an Excel file using PHP. It util
    ```bash
    composer install
    ```
+
+# Hasil
+<img width="552" height="341" alt="image" src="https://github.com/user-attachments/assets/f7f40ac8-5d12-4709-b6e7-751ddc6486b4" />
+
+<img width="350" height="485" alt="image" src="https://github.com/user-attachments/assets/83ba8baf-b47e-4b63-ba31-1cb0313be16f" />
