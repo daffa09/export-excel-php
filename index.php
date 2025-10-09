@@ -1,11 +1,11 @@
 <?php
-// Simple upload preview + export button
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['images'])) {
   foreach ($_FILES['images']['tmp_name'] as $key => $tmp) {
     $name = $_FILES['images']['name'][$key];
     move_uploaded_file($tmp, "uploads/" . $name);
   }
 }
+
 $files = glob("uploads/*.*");
 ?>
 <!DOCTYPE html>
@@ -14,6 +14,28 @@ $files = glob("uploads/*.*");
 <head>
   <meta charset="UTF-8">
   <title>Simulasi Export Gambar ke Excel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    img {
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    .button-group {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,9 +50,17 @@ $files = glob("uploads/*.*");
     <img src="<?= $f ?>" width="100">
   <?php endforeach; ?>
 
-  <form action="export.php" method="post">
-    <button type="submit">Export ke Excel</button>
-  </form>
+  <div class="button-group">
+    <form action="export.php" method="post" style="display:inline;">
+      <button type="submit">Export ke Excel</button>
+    </form>
+
+    <!-- Tombol menuju print.php -->
+    <form action="print.php" method="post" target="_blank" style="display:inline;">
+      <input type="hidden" name="files" value='<?= json_encode($files) ?>'>
+      <button type="submit">Print PDF</button>
+    </form>
+  </div>
 </body>
 
 </html>
